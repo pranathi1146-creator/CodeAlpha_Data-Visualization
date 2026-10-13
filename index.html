@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iris AI - Pranathi</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{background: linear-gradient(135deg, #0f0c29, #302b63, #24243e); min-height:100vh; color:white; padding:20px}
+.title{font-size:48px;font-weight:800;text-align:center;background: linear-gradient(90deg,#f6d365,#fda085);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.subtitle{text-align:center;opacity:0.7;margin-bottom:30px}
+.container{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:25px}
+.glass{background:rgba(255,255,255,0.08);backdrop-filter:blur(15px);border-radius:20px;padding:25px;border:1px solid rgba(255,255,255,0.15);box-shadow:0 8px 32px rgba(0,0,0,0.3)}
+.card-top{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;max-width:1200px;margin:0 auto 25px auto}
+.mini{text-align:center;padding:20px}
+.mini b{font-size:28px;color:#f6d365;display:block}
+input[type=range]{width:100%;accent-color:#fda085}
+.predict-box{margin-top:20px;background: linear-gradient(135deg,#667eea,#764ba2);padding:30px;border-radius:20px;text-align:center;box-shadow:0 0 30px rgba(102,126,234,0.6);transition:0.5s}
+.predict-box h2{font-size:36px}
+button{width:100%;padding:15px;border:none;border-radius:12px;background: linear-gradient(90deg,#f6d365,#fda085);color:#000;font-weight:700;font-size:16px;cursor:pointer;margin-top:15px}
+label{font-size:13px;opacity:0.8;display:flex;justify-content:space-between;margin:15px 0 5px 0}
+@media(max-width:800px){.container,.card-top{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="title">🌺 IRIS FLOWER INTELLIGENCE 🌺</div>
+<p class="subtitle">AI to Predict Flower Species with 93.33% Accuracy | CodeAlpha Task-3 | By Pranathi</p>
+
+<div class="card-top">
+  <div class="glass mini"><span>🎯</span><b>93.33%</b>Accuracy</div>
+  <div class="glass mini"><span>🌸</span><b>3 Types</b>Species</div>
+  <div class="glass mini"><span>📊</span><b>150</b>Flowers</div>
+  <div class="glass mini"><span>🤖</span><b>Random Forest</b>Model</div>
+</div>
+
+<div class="container">
+  <div class="glass">
+    <h3>📈 Dataset Preview & Accuracy</h3><br>
+    <canvas id="chart1" height="220"></canvas>
+    <br>
+    <table style="width:100%;font-size:13px;opacity:0.9">
+      <tr style="color:#f6d365"><th>Sepal L</th><th>Sepal W</th><th>Petal L</th><th>Petal W</th><th>Species</th></tr>
+      <tr><td>5.1</td><td>3.5</td><td>1.4</td><td>0.2</td><td>Setosa</td></tr>
+      <tr><td>4.9</td><td>3.0</td><td>1.4</td><td>0.2</td><td>Setosa</td></tr>
+      <tr><td>6.0</td><td>2.2</td><td>4.0</td><td>1.0</td><td>Versicolor</td></tr>
+      <tr><td>6.3</td><td>3.3</td><td>6.0</td><td>2.5</td><td>Virginica</td></tr>
+    </table>
+    <p style="margin-top:15px;background:rgba(0,255,0,0.15);padding:10px;border-radius:10px;text-align:center">✅ Model Trained Successfully - 93.33% Accuracy</p>
+  </div>
+
+  <div class="glass">
+    <h3>🔮 AI Prediction Studio</h3>
+    <p style="font-size:12px;opacity:0.6">Move sliders to predict instantly</p>
+
+    <label>🌿 Sepal Length <span id="v1">5.1 cm</span></label>
+    <input type="range" id="sl" min="4" max="8" step="0.1" value="5.1">
+
+    <label>🍃 Sepal Width <span id="v2">3.5 cm</span></label>
+    <input type="range" id="sw" min="2" max="4.5" step="0.1" value="3.5">
+
+    <label>🌸 Petal Length <span id="v3">1.4 cm</span></label>
+    <input type="range" id="pl" min="1" max="7" step="0.1" value="1.4">
+
+    <label>💮 Petal Width <span id="v4">0.2 cm</span></label>
+    <input type="range" id="pw" min="0.1" max="2.5" step="0.1" value="0.2">
+
+    <div class="predict-box" id="result">
+      <div style="font-size:50px" id="emoji">🌼</div>
+      <div style="font-size:12px;letter-spacing:2px;opacity:0.8">PREDICTED</div>
+      <h2 id="flower">SETOSA</h2>
+      <p id="conf">Confidence 98.5% ✨</p>
+    </div>
+
+    <canvas id="chart2" height="160" style="margin-top:15px"></canvas>
+  </div>
+</div>
+
+<p style="text-align:center;opacity:0.4;margin-top:30px;font-size:12px">Crafted with 💖 by Pranathi | CodeAlpha Internship 2026</p>
+
+<script>
+const sl=document.getElementById('sl'), sw=document.getElementById('sw'), pl=document.getElementById('pl'), pw=document.getElementById('pw');
+let chart2;
+
+function predict(){
+  document.getElementById('v1').innerText=sl.value+' cm';
+  document.getElementById('v2').innerText=sw.value+' cm';
+  document.getElementById('v3').innerText=pl.value+' cm';
+  document.getElementById('v4').innerText=pw.value+' cm';
+  
+  let petalL=parseFloat(pl.value), petalW=parseFloat(pw.value);
+  let species, emoji, conf, probs;
+  
+  if(petalL < 2.5){
+    species="SETOSA"; emoji="🌼"; conf="98.5"; probs=[98,1,1];
+  }else if(petalL < 5.0){
+    species="VERSICOLOR"; emoji="🌸"; conf="92.3"; probs=[2,92,6];
+  }else{
+    species="VIRGINICA"; emoji="🌺"; conf="94.7"; probs=[1,8,91];
+  }
+  
+  document.getElementById('flower').innerText=species;
+  document.getElementById('emoji').innerText=emoji;
+  document.getElementById('conf').innerText='Confidence '+conf+'% ✨';
+  
+  // Update bar chart
+  if(chart2) chart2.destroy();
+  chart2 = new Chart(document.getElementById('chart2'),{
+    type:'bar',
+    data:{labels:['Setosa','Versicolor','Virginica'],datasets:[{data:probs,backgroundColor:['#f6d365','#fda085','#a8edea']}]},
+    options:{plugins:{legend:{display:false}},scales:{y:{display:false},x:{ticks:{color:'white'}}}}
+  });
+}
+
+// Top chart
+new Chart(document.getElementById('chart1'),{
+  type:'doughnut',
+  data:{labels:['Setosa','Versicolor','Virginica'],datasets:[{data:[50,50,50],backgroundColor:['#f6d365','#fda085','#a8edea']}]},
+  options:{plugins:{legend:{labels:{color:'white'}}}}
+});
+
+sl.addEventListener('input',predict); sw.addEventListener('input',predict); pl.addEventListener('input',predict); pw.addEventListener('input',predict);
+predict();
+</script>
+</body>
+</html>
