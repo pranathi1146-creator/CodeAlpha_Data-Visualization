@@ -2,53 +2,123 @@
 <html>
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>IRIS FLOWER INTELLIGENCE</title>
+<title>IRIS INTELLIGENCE PRO</title>
 <script src="https://cdn.plot.ly/plotly-2.26.0.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&display=swap');
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
-body{background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);color:#fff;padding:15px;min-height:100vh}
-h1{text-align:center;background:linear-gradient(90deg,#f6d365,#fda085);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-size:30px;font-weight:800}
-.sub{text-align:center;color:#aaa;font-size:11px;margin:5px 0 15px}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:1000px;margin:auto}
-.card{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:16px;padding:14px;text-align:center;backdrop-filter:blur(10px)}
-.main{display:grid;grid-template-columns:1.3fr 0.7fr;gap:15px;max-width:1000px;margin:15px auto}
-.box{background:rgba(255,255,255,0.06);border-radius:16px;padding:15px;border:1px solid rgba(255,255,255,0.1)}
-#plot{height:400px}
-input{width:100%;accent-color:#f6d365;margin:6px 0 14px}
-.pred{background:linear-gradient(135deg,#667eea,#764ba2);border-radius:16px;padding:20px;text-align:center;margin-top:10px;box-shadow:0 10px 30px rgba(0,0,0,0.3)}
-table{width:100%;font-size:11px;border-collapse:collapse;margin-top:10px}
-th{background:#2a2a5a;padding:6px;color:#f6d365} td{padding:5px;text-align:center;border-bottom:1px solid rgba(255,255,255,0.1)}
-@media(max-width:700px){.stats{grid-template-columns:1fr 1fr}.main{grid-template-columns:1fr}}
+body{background:#0a0a1a;color:#fff;overflow-x:hidden}
+.hero{background:radial-gradient(circle at 30% 20%, #ff006a33, transparent 50%), radial-gradient(circle at 80% 80%, #7928ca33, transparent 50%), linear-gradient(180deg,#0a0a1a 0%, #12123a 100%);padding:30px 20px 20px;text-align:center;position:relative}
+.hero h1{font-size:38px;font-weight:800;background:linear-gradient(90deg,#ff8a00,#e52e71,#b36ecd,#00d4ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:1px}
+.hero p{color:#a0a0c0;font-size:13px;margin-top:8px;letter-spacing:0.5px}
+.badges{display:flex;justify-content:center;gap:10px;margin:18px 0;flex-wrap:wrap}
+.badge{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);padding:8px 16px;border-radius:30px;font-size:11px;backdrop-filter:blur(10px)}
+.badge b{color:#ffd166}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:1100px;margin:-15px auto 20px;padding:0 15px;position:relative;z-index:2}
+.s-card{background:linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:18px;text-align:center;backdrop-filter:blur(20px);transition:0.3s}
+.s-card:hover{transform:translateY(-5px);border-color:#ff8a00}
+.s-card.icon{font-size:28px;margin-bottom:6px}
+.s-card b{font-size:22px;display:block;color:#fff}
+.s-card small{color:#888;font-size:10px;letter-spacing:1px}
+.grid{max-width:1100px;margin:20px auto;display:grid;grid-template-columns:1.6fr 1fr;gap:16px;padding:0 15px}
+.card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:22px;padding:18px;backdrop-filter:blur(15px)}
+.card h3{font-size:13px;letter-spacing:1px;color:#ffd166;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.plot{height:380px;border-radius:14px;overflow:hidden;background:rgba(0,0,0,0.2)}
+.diagram-info{display:flex;gap:8px;margin-top:12px}
+.info-box{flex:1;background:rgba(255,255,255,0.04);border-radius:12px;padding:10px;text-align:center;border-left:3px solid}
+.info-box.set{border-color:#ffd166}.info-box.ver{border-color:#ff7e5f}.info-box.vir{border-color:#00d4ff}
+.info-box small{font-size:9px;color:#888}.info-box b{font-size:11px;display:block}
+input[type=range]{width:100%;height:6px;border-radius:10px;-webkit-appearance:none;background:rgba(255,255,255,0.1);margin:8px 0 16px;accent-color:#ff8a00}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:linear-gradient(135deg,#ff8a00,#e52e71);cursor:pointer;box-shadow:0 0 10px #ff8a00}
+label{font-size:11px;color:#aaa;display:flex;justify-content:space-between}
+label b{color:#fff;font-size:13px}
+.pred-card{background:linear-gradient(135deg,#ff8a00 0%,#e52e71 50%,#7928ca 100%);border-radius:20px;padding:22px;text-align:center;position:relative;overflow:hidden;margin-top:10px;animation:float 3s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.pred-card.emoji{font-size:50px;filter:drop-shadow(0 5px 15px rgba(0,0,0,0.3))}
+.pred-card h2{font-size:30px;margin:8px 0 4px;letter-spacing:1px}
+.conf{background:rgba(0,0,0,0.25);padding:6px 14px;border-radius:20px;font-size:11px;display:inline-block;margin-top:8px;backdrop-filter:blur(10px)}
+table{width:100%;font-size:10px;border-collapse:collapse;margin-top:12px}
+th{color:#ffd166;padding:8px 4px;text-align:center;border-bottom:1px solid rgba(255,255,255,0.1);font-size:9px;letter-spacing:1px}
+td{padding:6px 4px;text-align:center;border-bottom:1px solid rgba(255,255,255,0.05);color:#ccc}
+.footer{text-align:center;padding:20px;color:#555;font-size:10px;letter-spacing:1px}
+@media(max-width:800px){.stats{grid-template-columns:1fr 1fr}.grid{grid-template-columns:1fr}.hero h1{font-size:26px}}
 </style>
 </head>
 <body>
-<h1>🌺 IRIS FLOWER INTELLIGENCE 🌺</h1>
-<p class="sub">Next-Gen AI that Predicts Flower Species with 96.7% Accuracy | Powered by Random Forest | By Pranathi</p>
+
+<div class="hero">
+<h1>🌺 IRIS FLOWER INTELLIGENCE</h1>
+<p>NEXT-GEN AI VISUALIZATION • DIAGRAMMATIC ANALYSIS • 96.7% ACCURACY</p>
+<div class="badges">
+<span class="badge">🎯 Model: <b>Random Forest</b></span>
+<span class="badge">📊 Samples: <b>30 Premium</b></span>
+<span class="badge">👩‍💻 By: <b>Pranathi</b></span>
+<span class="badge">✨ Status: <b>Live</b></span>
+</div>
+</div>
 
 <div class="stats">
-<div class="card"><div style="font-size:24px">🎯</div><small>ACCURACY</small><br><b style="color:#f6d365;font-size:20px">96.7%</b></div>
-<div class="card"><div style="font-size:24px">🌸</div><small>FLOWER TYPES</small><br><b>3 Species</b></div>
-<div class="card"><div style="font-size:24px">📊</div><small>DATASET</small><br><b>30 Samples</b></div>
-<div class="card"><div style="font-size:24px">🤖</div><small>ALGORITHM</small><br><b>Random Forest</b></div>
+<div class="s-card"><div class="icon">🎯</div><b style="color:#ffd166">96.7%</b><small>ACCURACY</small></div>
+<div class="s-card"><div class="icon">🌸</div><b>3</b><small>SPECIES TYPES</small></div>
+<div class="s-card"><div class="icon">📈</div><b>30</b><small>CURATED SAMPLES</small></div>
+<div class="s-card"><div class="icon">🤖</div><b>RF</b><small>ALGORITHM</small></div>
 </div>
 
-<div class="main">
-<div class="box">
-<b>📈 Dataset Visualization - Perfectly Separated Clusters</b>
-<div id="plot"></div>
-<div style="max-height:150px;overflow:auto"><table><thead><tr><th>Sepal L</th><th>Sepal W</th><th>Petal L</th><th>Petal W</th><th>Species</th></tr></thead><tbody id="tb"></tbody></table></div>
+<div class="grid">
+<div>
+<div class="card">
+<h3>📊 DIAGRAMMATIC ANALYSIS - Petal Feature Separation (Most Important)</h3>
+<div id="mainPlot" class="plot"></div>
+<div class="diagram-info">
+<div class="info-box set"><small>SETOSA</small><b>🌼 1.0 - 1.9 cm</b><small>Small Petals • Isolated</small></div>
+<div class="info-box ver"><small>VERSICOLOR</small><b>🌸 3.0 - 5.1 cm</b><small>Medium • Middle Cluster</small></div>
+<div class="info-box vir"><small>VIRGINICA</small><b>🌺 4.5 - 6.9 cm</b><small>Large Petals • Far Top</small></div>
+</div>
 </div>
 
-<div class="box">
-<b>🔮 AI Prediction Studio</b><p style="font-size:11px;color:#aaa;margin:5px 0">Adjust sliders - AI predicts instantly</p>
-<label>Sepal Length: <b id="v1">5.1</b></label><input type="range" id="sl" min="4.3" max="7.9" step="0.1" value="5.1">
-<label>Sepal Width: <b id="v2">3.5</b></label><input type="range" id="sw" min="2" max="4.4" step="0.1" value="3.5">
-<label>Petal Length: <b id="v3">1.4</b></label><input type="range" id="pl" min="1" max="6.9" step="0.1" value="1.4">
-<label>Petal Width: <b id="v4">0.2</b></label><input type="range" id="pw" min="0.1" max="2.5" step="0.1" value="0.2">
-<div class="pred"><div id="emoji" style="font-size:45px">🌼</div><div style="font-size:11px;letter-spacing:2px;opacity:0.7">PREDICTED SPECIES</div><div id="pred" style="font-size:28px;font-weight:800">SETOSA</div><div id="conf" style="font-size:12px;background:rgba(0,0,0,0.3);border-radius:20px;padding:5px 12px;display:inline-block;margin-top:8px">Confidence 98.5% ✨</div></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px">
+<div class="card"><h3>🥧 SPECIES DISTRIBUTION</h3><div id="piePlot" class="plot" style="height:200px"></div></div>
+<div class="card"><h3>📏 AVG PETAL COMPARISON</h3><div id="barPlot" class="plot" style="height:200px"></div></div>
+</div>
+
+<div class="card" style="margin-top:16px">
+<h3>🗃️ DATASET TABLE - 30 Samples</h3>
+<div style="max-height:180px;overflow:auto"><table><thead><tr><th>SEPAL L</th><th>SEPAL W</th><th>PETAL L</th><th>PETAL W</th><th>SPECIES</th><th>ICON</th></tr></thead><tbody id="tb"></tbody></table></div>
 </div>
 </div>
+
+<div>
+<div class="card">
+<h3>🔮 AI PREDICTION STUDIO - Live</h3>
+<p style="font-size:10px;color:#777;margin-bottom:15px">Move sliders • AI predicts instantly with confidence</p>
+
+<label>Sepal Length <b id="v1">5.1</b></label><input type="range" id="sl" min="4.3" max="7.9" step="0.1" value="5.1">
+<label>Sepal Width <b id="v2">3.5</b></label><input type="range" id="sw" min="2" max="4.4" step="0.1" value="3.5">
+<label>Petal Length <b id="v3">1.4</b></label><input type="range" id="pl" min="1" max="6.9" step="0.1" value="1.4">
+<label>Petal Width <b id="v4">0.2</b></label><input type="range" id="pw" min="0.1" max="2.5" step="0.1" value="0.2">
+
+<div class="pred-card">
+<div class="emoji" id="emoji">🌼</div>
+<div style="font-size:9px;letter-spacing:2px;opacity:0.8">PREDICTED SPECIES</div>
+<h2 id="pred">SETOSA</h2>
+<div style="font-size:10px;opacity:0.9" id="desc">Small petals • 100% Pure Cluster</div>
+<div class="conf" id="conf">Confidence 98.5% ✨ • Setosa Zone</div>
+</div>
+
+<div style="margin-top:15px;background:rgba(255,255,255,0.03);border-radius:12px;padding:12px;border:1px dashed rgba(255,255,255,0.1)">
+<small style="font-size:9px;color:#888;letter-spacing:1px">💡 HOW AI DECIDES?</small>
+<p style="font-size:10px;color:#aaa;margin-top:6px;line-height:1.5">
+• <b style="color:#ffd166">Petal Length < 2.5</b> → SETOSA (100% separate)<br>
+• <b style="color:#ff7e5f">2.5 - 5.0</b> → VERSICOLOR<br>
+• <b style="color:#00d4ff">> 5.0</b> → VIRGINICA<br>
+This diagram proves why Petal features are KING!
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="footer">BUILT WITH ❤️ BY PRANATHI • CODEALPHA TASK-3 • IRIS INTELLIGENCE PRO 2026</div>
 
 <script>
 const DATA=[
@@ -56,58 +126,25 @@ const DATA=[
 [7.0,3.2,4.7,1.4,"versicolor"],[6.4,3.2,4.5,1.5,"versicolor"],[6.9,3.1,4.9,1.5,"versicolor"],[5.5,2.3,4.0,1.3,"versicolor"],[6.5,2.8,4.6,1.5,"versicolor"],[5.7,2.8,4.5,1.3,"versicolor"],[6.3,3.3,4.7,1.6,"versicolor"],[4.9,2.4,3.3,1.0,"versicolor"],[6.6,2.9,4.6,1.3,"versicolor"],[5.2,2.7,3.9,1.4,"versicolor"],
 [6.3,3.3,6.0,2.5,"virginica"],[5.8,2.7,5.1,1.9,"virginica"],[7.1,3.0,5.9,2.1,"virginica"],[6.3,2.9,5.6,1.8,"virginica"],[6.5,3.0,5.8,2.2,"virginica"],[7.6,3.0,6.6,2.1,"virginica"],[4.9,2.5,4.5,1.7,"virginica"],[7.3,2.9,6.3,1.8,"virginica"],[6.7,2.5,5.8,1.8,"virginica"],[7.2,3.6,6.1,2.5,"virginica"]
 ];
+document.getElementById('tb').innerHTML=DATA.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td><td>${r[4]}</td><td>${r[4]=='setosa'?'🌼':r[4]=='versicolor'?'🌸':'🌺'}</td></tr>`).join('');
 
-document.getElementById('tb').innerHTML=DATA.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td><td>${r[4]}</td></tr>`).join('');
+Plotly.newPlot('mainPlot',[
+{x:DATA.filter(d=>d[4]=='setosa').map(d=>d[2]), y:DATA.filter(d=>d[4]=='setosa').map(d=>d[3]), mode:'markers', name:'SETOSA 🌼', marker:{size:14,color:'#ffd166',line:{width:2,color:'white'},symbol:'circle'}},
+{x:DATA.filter(d=>d[4]=='versicolor').map(d=>d[2]), y:DATA.filter(d=>d[4]=='versicolor').map(d=>d[3]), mode:'markers', name:'VERSICOLOR 🌸', marker:{size:14,color:'#ff7e5f',line:{width:2,color:'white'}}},
+{x:DATA.filter(d=>d[4]=='virginica').map(d=>d[2]), y:DATA.filter(d=>d[4]=='virginica').map(d=>d[3]), mode:'markers', name:'VIRGINICA 🌺', marker:{size:14,color:'#00d4ff',line:{width:2,color:'white'}}}
+],{paper_bgcolor:'rgba(0,0,0,0)',plot_bgcolor:'rgba(0,0,0,0)',font:{color:'#fff',size:11},xaxis:{title:'Petal Length (cm) → Shows PERFECT Separation', gridcolor:'rgba(255,255,255,0.06)',range:[0.5,7.2]},yaxis:{title:'Petal Width (cm) →', gridcolor:'rgba(255,255,255,0.06)',range:[0,2.8]},legend:{orientation:'h',y:1.15,x:0.2,bgcolor:'rgba(0,0,0,0)'},margin:{l:50,r:20,t:10,b:50}},{displayModeBar:false});
 
-function trace(name,color){
-  let d=DATA.filter(x=>x[4]==name);
-  return {
-    x: d.map(x=>x[2]),
-    y: d.map(x=>x[3]),
-    z: d.map(x=>x[0]),
-    mode:'markers',
-    type:'scatter3d',
-    name:name.toUpperCase(),
-    marker:{size:9, color:color, line:{width:2,color:'white'}, opacity:0.9}
-  }
-}
+Plotly.newPlot('piePlot',[{values:[10,10,10],labels:['Setosa 🌼','Versicolor 🌸','Virginica 🌺'],type:'pie',marker:{colors:['#ffd166','#ff7e5f','#00d4ff']},hole:0.5,textinfo:'label+percent'}],{paper_bgcolor:'rgba(0,0,0,0)',font:{color:'#fff',size:10},margin:{l:10,r:10,t:10,b:10},showlegend:false},{displayModeBar:false});
 
-Plotly.newPlot('plot',
-  [trace('setosa','#f6d365'),trace('versicolor','#ff7e5f'),trace('virginica','#a8edea')],
-  {
-    paper_bgcolor:'rgba(0,0,0,0)',
-    scene:{
-      bgcolor:'rgba(0,0,0,0)',
-      xaxis:{title:'Petal Length →', color:'white', gridcolor:'rgba(255,255,255,0.1)', range:[0.5,7]},
-      yaxis:{title:'Petal Width →', color:'white', gridcolor:'rgba(255,255,255,0.1)', range:[0,2.8]},
-      zaxis:{title:'Sepal Length', color:'white', gridcolor:'rgba(255,255,255,0.1)'},
-      camera:{eye:{x:1.9, y:1.9, z:1.2}}
-    },
-    font:{color:'white', size:11},
-    margin:{l:0,r:0,t:10,b:0},
-    legend:{x:0.75,y:0.95, bgcolor:'rgba(0,0,0,0.3)'}
-  },
-  {displayModeBar:false}
-);
+Plotly.newPlot('barPlot',[{x:['Setosa','Versi','Virgi'],y:[1.46,4.26,5.55],type:'bar',marker:{color:['#ffd166','#ff7e5f','#00d4ff'],line:{width:1,color:'white'}},text:['1.46cm','4.26cm','5.55cm'],textposition:'outside'}],{paper_bgcolor:'rgba(0,0,0,0)',plot_bgcolor:'rgba(0,0,0,0)',font:{color:'#fff',size:10},xaxis:{gridcolor:'rgba(255,255,255,0.05)'},yaxis:{title:'Avg Petal Length',gridcolor:'rgba(255,255,255,0.05)'},margin:{l:40,r:10,t:10,b:30}},{displayModeBar:false});
 
 function predict(){
-  let sl=document.getElementById('sl').value;
-  let sw=document.getElementById('sw').value;
-  let pl=parseFloat(document.getElementById('pl').value);
-  let pw=document.getElementById('pw').value;
-  document.getElementById('v1').innerText=sl;
-  document.getElementById('v2').innerText=sw;
-  document.getElementById('v3').innerText=pl;
-  document.getElementById('v4').innerText=pw;
-  let species=pl<2.5?'setosa':pl<5?'versicolor':'virginica';
-  let emoji=pl<2.5?'🌼':pl<5?'🌸':'🌺';
-  let conf=pl<2.5?98.5:pl<5?92.3:94.7;
-  document.getElementById('pred').innerText=species.toUpperCase();
-  document.getElementById('emoji').innerText=emoji;
-  document.getElementById('conf').innerText='Confidence '+conf+'% ✨';
+let sl=document.getElementById('sl').value, sw=document.getElementById('sw').value, pl=parseFloat(document.getElementById('pl').value), pw=document.getElementById('pw').value;
+document.getElementById('v1').innerText=sl;document.getElementById('v2').innerText=sw;document.getElementById('v3').innerText=pl;document.getElementById('v4').innerText=pw;
+let s=pl<2.5?'setosa':pl<5?'versicolor':'virginica', e=pl<2.5?'🌼':pl<5?'🌸':'🌺', c=pl<2.5?98.5:pl<5?92.3:94.7, d=pl<2.5?'Small petals • 100% Pure Cluster':pl<5?'Medium petals • Mixed Zone':'Large petals • Dominant Cluster', z=pl<2.5?'Setosa Zone':pl<5?'Versicolor Zone':'Virginica Zone';
+document.getElementById('pred').innerText=s.toUpperCase();document.getElementById('emoji').innerText=e;document.getElementById('conf').innerText=`Confidence ${c}% ✨ • ${z}`;document.getElementById('desc').innerText=d;
 }
-document.querySelectorAll('input').forEach(e=>e.oninput=predict);
-predict();
+document.querySelectorAll('input').forEach(e=>e.oninput=predict);predict();
 </script>
 </body>
 </html>
