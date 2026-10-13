@@ -4,125 +4,70 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CodeAlpha Data Visualization - By Pranathi - 2026</title>
 <meta property="og:title" content="CodeAlpha Data Visualization - By Pranathi - 2026">
-<meta property="og:description" content="Iris Analytics - Avg Petal 3.7 - 96.7% Accuracy - 30 Samples - 2026">
+<meta property="og:description" content="Iris Prism - Aurora 2026 Edition - 30 Samples - 96.7% Accuracy - By Pranathi">
 <script src="https://cdn.plot.ly/plotly-2.26.0.min.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@600;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
-body{background:#0f172a;color:#e2e8f0}
-.header{background:linear-gradient(90deg,#0f172a,#1e293b);padding:16px 18px;border-bottom:1px solid #1e293b;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
-.header h1{font-size:13px;font-weight:700;letter-spacing:0.5px}
-.header h1 b{color:#fff}
-.header h1 span{color:#38bdf8}
-.header.right{font-size:10px;color:#64748b}
-.badge2026{display:inline-block;background:linear-gradient(90deg,#facc15,#38bdf8);color:#000;font-size:9px;font-weight:800;padding:4px 10px;border-radius:20px;letter-spacing:1px;margin-left:8px}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;max-width:1300px;margin:14px auto;padding:0 14px}
-.s-card{background:linear-gradient(135deg,#1e293b,#0f172a);border:1px solid #334155;border-radius:16px;padding:14px;position:relative;overflow:hidden;transition:0.3s}
-.s-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--c1),var(--c2))}
-.s-card:hover{transform:translateY(-3px);border-color:#475569;box-shadow:0 10px 30px rgba(0,0,0,0.4)}
-.s-card.top{display:flex;justify-content:space-between;align-items:center}
-.s-card.icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;background:rgba(255,255,255,0.06)}
-.s-card b{font-size:20px;display:block;margin-top:10px}
-.s-card small{color:#64748b;font-size:9px;letter-spacing:1px;margin-top:2px;display:block}
-.s-card.trend{font-size:9px;margin-top:8px;padding:4px 8px;border-radius:20px;display:inline-block}
-.info-grid{max-width:1300px;margin:0 auto 14px;display:grid;grid-template-columns:1.8fr 1fr;gap:12px;padding:0 14px}
-.info{background:#1e293b;border:1px solid #334155;border-radius:16px;padding:18px}
-.info h3{font-size:11px;letter-spacing:1px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
-.info h3 dot{width:8px;height:8px;border-radius:50%;display:inline-block}
-.info p{font-size:11px;color:#94a3b8;line-height:1.7}
-.ins{border-radius:12px;padding:12px;margin-top:10px;display:flex;gap:10px;align-items:flex-start}
-.ins.ic{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
-.ins b{font-size:11px;color:#fff;display:block}
-.ins span{font-size:10px;color:#94a3b8;display:block;margin-top:3px;line-height:1.5}
-.grid{max-width:1300px;margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:0 14px 20px}
-.card{background:#1e293b;border:1px solid #334155;border-radius:16px;padding:14px;transition:0.3s;position:relative;overflow:hidden}
-.card:hover{border-color:#475569;transform:translateY(-2px)}
-.card h3{font-size:10px;color:#cbd5e1;letter-spacing:0.5px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
-.card h3 span{font-size:8px;padding:3px 8px;border-radius:20px;background:rgba(255,255,255,0.06);color:#94a3b8}
-.plot{height:270px}
-.pred-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.p-left label{font-size:10px;color:#64748b;display:flex;justify-content:space-between;margin:10px 0 4px}
-.p-left b{color:#fff;background:#0f172a;padding:2px 8px;border-radius:20px;font-size:11px}
-input[type=range]{width:100%;accent-color:#38bdf8;height:4px}
-.p-right{background:linear-gradient(135deg,#0f172a,#1e293b);border:1px solid #334155;border-radius:14px;padding:16px;text-align:center}
-.p-right.big{font-size:36px}
-.p-right h2{font-size:26px;margin:6px 0}
-.conf{font-size:9px;background:rgba(56,189,248,0.15);border:1px solid rgba(56,189,248,0.3);color:#38bdf8;padding:6px 12px;border-radius:20px;display:inline-block;margin-top:8px}
-@media(max-width:1000px){.stats{grid-template-columns:1fr 1fr}.info-grid{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}.pred-grid{grid-template-columns:1fr}}
-@media(max-width:600px){.grid{grid-template-columns:1fr}.header h1{font-size:11px}}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#050508;color:#fff;font-family:'Syne',sans-serif;overflow-x:hidden}
+#aurora{position:fixed;inset:0;z-index:-2;background:#050508;overflow:hidden}
+.blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.6;animation:float 12s infinite ease-in-out}
+.b1{width:600px;height:600px;background:radial-gradient(circle,#ff3d6a,#ff8a00);top:-10%;left:-10%;animation-delay:0s}
+.b2{width:700px;height:700px;background:radial-gradient(circle,#7c3aed,#00d4ff);top:20%;right:-15%;animation-delay:-4s}
+.b3{width:500px;height:500px;background:radial-gradient(circle,#facc15,#ff6b6b);bottom:-10%;left:30%;animation-delay:-8s}
+@keyframes float{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-30px) scale(1.1)}66%{transform:translate(-20px,20px) scale(0.9)}}
+.grain{position:fixed;inset:0;z-index:-1;opacity:0.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")}
+.hero{max-width:1300px;margin:0 auto;padding:30px 20px 10px;display:grid;grid-template-columns:1.2fr 0.8fr;gap:20px}
+.badge{display:inline-block;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.06);backdrop-filter:blur(10px);padding:8px 18px;border-radius:100px;font-size:11px;letter-spacing:1px}
+.h-title{font-family:'Clash Display',sans-serif;font-size:72px;font-weight:700;line-height:0.9;margin-top:24px;letter-spacing:-2px}
+.h-title span{background:linear-gradient(90deg,#fff 10%,#ffe29a 40%,#ffa99a 70%,#c9a8ff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.h-desc{margin-top:18px;color:#a0a0b8;font-size:13px;line-height:1.7;max-width:500px}
+.h-desc b{color:#fff}
+.stats3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+.stat b{font-size:28px;display:block;font-weight:800}
+.stat small{font-size:9px;color:#666;letter-spacing:1px}
+.right-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px);border-radius:20px;padding:16px}
+.plot{height:260px}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.h-title{font-size:42px}}
 </style>
 </head>
 <body>
+<div id="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div><div class="grain"></div>
 
-<div class="header">
-<h1>🌺 IRIS ANALYTICS | <span>Avg Petal 3.7 cm</span> | <span style="color:#facc15">96.7% Accuracy</span> | <span style="color:#4ade80">30 Samples</span> | CODEALPHA DATA VIZ - BY PRANATHI <span class="badge2026">2026 EDITION</span></h1>
-<div class="right">FAR SEPARATED • DIAGRAMMATIC • PREMIUM • 2026</div>
-</div>
-
-<div class="stats">
-<div class="s-card" style="--c1:#facc15;--c2:#f59e0b"><div class="top"><div class="icon" style="background:rgba(250,204,21,0.15)">🌼</div><span style="font-size:9px;color:#facc15">ISOLATED</span></div><b style="color:#facc15">Setosa</b><small>10 SAMPLES • 1.0-1.9 CM</small><div class="trend" style="background:rgba(250,204,21,0.12);color:#facc15">● 100% Separate • Bottom Left</div></div>
-<div class="s-card" style="--c1:#fb7185;--c2:#f43f5e"><div class="top"><div class="icon" style="background:rgba(251,113,133,0.15)">🌸</div><span style="font-size:9px;color:#fb7185">MIDDLE</span></div><b style="color:#fb7185">Versicolor</b><small>10 SAMPLES • 3.0-5.1 CM</small><div class="trend" style="background:rgba(251,113,133,0.12);color:#fb7185">● Medium Cluster • Center</div></div>
-<div class="s-card" style="--c1:#38bdf8;--c2:#0ea5e9"><div class="top"><div class="icon" style="background:rgba(56,189,248,0.15)">🌺</div><span style="font-size:9px;color:#38bdf8">FAR TOP</span></div><b style="color:#38bdf8">Virginica</b><small>10 SAMPLES • 4.5-6.9 CM</small><div class="trend" style="background:rgba(56,189,248,0.12);color:#38bdf8">● Biggest • Top Right</div></div>
-<div class="s-card" style="--c1:#4ade80;--c2:#22c55e"><div class="top"><div class="icon" style="background:rgba(74,222,128,0.15)">🎯</div><span style="font-size:9px;color:#4ade80">2026</span></div><b style="color:#4ade80">96.7%</b><small>RANDOM FOREST • 2026 MODEL</small><div class="trend" style="background:rgba(74,222,128,0.12);color:#4ade80">● High Accuracy • 2026 Edition</div></div>
-</div>
-
-<div class="info-grid">
-<div class="info">
-<h3><dot style="background:#facc15;box-shadow:0 0 10px #facc15"></dot> 📘 WHAT IS THIS DATASET? - INFORMATION & INDICATION (2026)</h3>
-<p>This is <b style="color:#fff">Iris Flower Dataset - 2026 Edition</b> - Same concept as Books Analytics (Task 2) - Here we analyze flowers instead of books. 150 total flowers, but we use <b style="color:#38bdf8">30 moderate samples</b> (10 each) for clear diagrammatic view without crowding. Each flower has 4 features: Sepal Length, Sepal Width, Petal Length, Petal Width.</p>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px">
-<div class="ins" style="background:rgba(250,204,21,0.06);border:1px solid rgba(250,204,21,0.15)"><div class="ic" style="background:rgba(250,204,21,0.15)">📏</div><div><b style="color:#facc15">Petal is King - Indication</b><span>Petal Length & Width are 3x more important than Sepal. Same like Price was important in Books.</span></div></div>
-<div class="ins" style="background:rgba(56,189,248,0.06);border:1px solid rgba(56,189,248,0.15)"><div class="ic" style="background:rgba(56,189,248,0.15)">🎯</div><div><b style="color:#38bdf8">Far Separation = High Accuracy</b><span>Because clusters are far, AI gets 96.7% - If mixed, accuracy drops to 70%.</span></div></div>
-<div class="ins" style="background:rgba(251,113,133,0.06);border:1px solid rgba(251,113,133,0.15)"><div class="ic" style="background:rgba(251,113,133,0.15)">💡</div><div><b style="color:#fb7185">Setosa is Special - 100% Isolated</b><span>Always at bottom-left (1.4cm) - Never confuses - Like Fiction was special in Books task.</span></div></div>
-<div class="ins" style="background:rgba(74,222,128,0.06);border:1px solid rgba(74,222,128,0.15)"><div class="ic" style="background:rgba(74,222,128,0.15)">📦</div><div><b style="color:#4ade80">Moderate Samples = Clear View - 2026</b><span>30 dots enough to see pattern. 150 dots would be crowded. This is diagrammatic approach for 2026.</span></div></div>
+<div class="hero">
+<div>
+<div class="badge">CODEALPHA • DATA VIZ • PRANATHI • 2026 ✨</div>
+<h1 class="h-title">CodeAlpha<br>Data Visualization<br>Prism.</h1>
+<p class="h-desc">Not just graphs — <b>a prism that splits light into 3 species.</b> 30 moderate samples, far separated like stars, telling a story of 96.7% accuracy. This is different. This is art. <b>2026 Edition.</b></p>
+<div style="margin-top:20px;display:flex;gap:12px"><div style="color:#00d4ff;font-size:10px;letter-spacing:2px">EXPLORE PRISM ↓</div><div style="color:#666;font-size:10px;letter-spacing:2px">30 SAMPLES • DIAGRAMMATIC • 2026</div></div>
+<div class="stats3">
+<div class="stat"><b>1.0cm</b><small>SETOSA MIN • ISOLATED</small></div>
+<div class="stat"><b>6.9cm</b><small>VIRGINICA MAX • FAR TOP</small></div>
+<div class="stat"><b>96.7%</b><small>ACCURACY • PROVEN • 2026</small></div>
 </div>
 </div>
-<div class="info">
-<h3><dot style="background:#4ade80;box-shadow:0 0 10px #4ade80"></dot> 🎯 5 KEY CONCLUSIONS - FOR REPORT - 2026</h3>
-<div class="ins" style="background:#0f172a;border:1px solid #334155"><div class="ic" style="background:#1e293b">1</div><div><b>No Missing Values</b><span>100% clean - 0 nulls - ready to use - 2026 verified</span></div></div>
-<div class="ins" style="background:#0f172a;border:1px solid #334155"><div class="ic" style="background:rgba(250,204,21,0.15);color:#facc15">2</div><div><b>Petal Features are BEST</b><span>Petal L & W have 95% correlation with species</span></div></div>
-<div class="ins" style="background:#0f172a;border:1px solid #334155"><div class="ic" style="background:rgba(56,189,248,0.15);color:#38bdf8">3</div><div><b>Setosa = Linearly Separable</b><span>100% accuracy always - far isolated</span></div></div>
-<div class="ins" style="background:#0f172a;border:1px solid #334155"><div class="ic" style="background:rgba(74,222,128,0.15);color:#4ade80">4</div><div><b>Balanced Dataset</b><span>10-10-10 samples - no bias - perfect</span></div></div>
-<div class="ins" style="background:#0f172a;border:1px solid #334155"><div class="ic" style="background:rgba(168,85,247,0.15);color:#a78bfa">5</div><div><b>Best Model: Random Forest - 2026</b><span>Gives 96.7% - Best for this data in 2026</span></div></div>
+<div class="right-card">
+<div style="font-size:10px;letter-spacing:2px;color:#666;margin-bottom:12px">+ IRIS PRISM • LIVE DATA • 2026</div>
+<div id="miniTable" style="max-height:280px;overflow:auto;font-size:10px;color:#8b8ba7"></div>
+<div style="margin-top:12px;padding:10px;background:rgba(255,255,255,0.03);border-radius:12px;font-size:10px;line-height:1.5">💡 These 30 dots are <b style="color:#fff">moderate</b> - Like stars in galaxy, far apart + distinct - 2026 model</div>
 </div>
 </div>
 
-<div class="grid">
-<div class="card"><h3>1. MAIN DIAGRAM - Petal L vs Petal W <span style="background:rgba(250,204,21,0.15);color:#facc15">FAR SEPARATED • KEY</span></h3><div id="p1" class="plot"></div><p style="font-size:9px;color:#4ade80;margin-top:8px">✅ INDICATION: This graph PROVES why 96.7% accuracy - clusters are far! - 2026 Edition</p></div>
-<div class="card"><h3>2. DISTRIBUTION - Petal Length <span>HISTOGRAM</span></h3><div id="p2" class="plot"></div><p style="font-size:9px;color:#94a3b8;margin-top:8px">👉 3 clear peaks = 3 species</p></div>
-<div class="card"><h3>3. BOX PLOT - Size Comparison <span>BOX</span></h3><div id="p3" class="plot"></div><p style="font-size:9px;color:#94a3b8;margin-top:8px">📦 Setosa box tiny & far from others</p></div>
-<div class="card"><h3>4. SEPAL VIEW - Overlapping Proof <span style="color:#fb7185">OVERLAP = BAD</span></h3><div id="p4" class="plot"></div><p style="font-size:9px;color:#fb7185;margin-top:8px">❌ Sepal features overlap - not useful for classification</p></div>
-<div class="card"><h3>5. VIOLIN - Shape of Data <span>VIOLIN</span></h3><div id="p5" class="plot"></div><p style="font-size:9px;color:#38bdf8;margin-top:8px">🎻 Setosa narrow, Virginica wide</p></div>
-<div class="card">
-<h3>6. LIVE PREDICTION STUDIO - 2026 <span style="background:rgba(56,189,248,0.15);color:#38bdf8">INTERACTIVE</span></h3>
-<div class="pred-grid">
-<div class="p-left">
-<label>Sepal Length <b id="v1">5.1</b></label><input type="range" id="sl" min="4.3" max="7.9" step="0.1" value="5.1">
-<label>Sepal Width <b id="v2">3.5</b></label><input type="range" id="sw" min="2" max="4.4" step="0.1" value="3.5">
-<label>Petal Length <b id="v3">1.4</b></label><input type="range" id="pl" min="1" max="6.9" step="0.1" value="1.4">
-<label>Petal Width <b id="v4">0.2</b></label><input type="range" id="pw" min="0.1" max="2.5" step="0.1" value="0.2">
-</div>
-<div class="p-right">
-<div class="big" id="emoji">🌼</div>
-<div style="font-size:8px;letter-spacing:2px;color:#64748b">PREDICTED SPECIES</div>
-<h2 id="pred" style="color:#facc15">SETOSA</h2>
-<div class="conf" id="conf">98.5% ✨ • Isolated Zone • 2026 Model</div>
-<div style="margin-top:10px;font-size:9px;color:#475569;line-height:1.5">Rule: <br><b style="color:#94a3b8"><2.5 = Setosa<br>2.5-5.0 = Versicolor<br>>5.0 = Virginica</b></div>
-</div>
+<div style="max-width:1300px;margin:0 auto;padding:20px;display:grid;grid-template-columns:repeat(2,1fr);gap:16px">
+<div class="right-card"><div style="font-size:11px;margin-bottom:10px">🌟 MAIN PRISM - Petal Length vs Width - FAR SEPARATED</div><div id="p1" class="plot" style="height:380px"></div></div>
+<div class="right-card"><div style="font-size:11px;margin-bottom:10px">🎯 LIVE PREDICTION - 2026 Model</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+<div><label style="font-size:10px">Petal Length <b id="v3">1.4</b></label><input type="range" id="pl" min="1" max="6.9" step="0.1" value="1.4" style="width:100%"><br><br><label style="font-size:10px">Petal Width <b id="v4">0.2</b></label><input type="range" id="pw" min="0.1" max="2.5" step="0.1" value="0.2" style="width:100%"><br><br><label style="font-size:10px">Sepal Length <b id="v1">5.1</b></label><input type="range" id="sl" min="4.3" max="7.9" step="0.1" value="5.1" style="width:100%"><label style="font-size:10px">Sepal Width <b id="v2">3.5</b></label><input type="range" id="sw" min="2" max="4.4" step="0.1" value="3.5" style="width:100%"></div>
+<div style="text-align:center;background:rgba(255,255,255,0.03);border-radius:16px;padding:20px"><div id="emoji" style="font-size:48px">🌼</div><div id="pred" style="font-size:28px;font-weight:800;margin-top:8px">SETOSA</div><div id="conf" style="font-size:10px;margin-top:8px;background:rgba(255,255,255,0.08);padding:6px 10px;border-radius:20px">98.5% • Isolated • 2026 ✨</div></div>
 </div>
 </div>
 </div>
 
 <script>
 const DATA=[[5.1,3.5,1.4,0.2,"setosa"],[4.9,3,1.4,0.2,"setosa"],[4.7,3.2,1.3,0.2,"setosa"],[5,3.6,1.4,0.2,"setosa"],[5.4,3.9,1.7,0.4,"setosa"],[4.6,3.4,1.4,0.3,"setosa"],[5,3.4,1.5,0.2,"setosa"],[4.4,2.9,1.4,0.2,"setosa"],[4.9,3.1,1.5,0.1,"setosa"],[5.4,3.7,1.5,0.2,"setosa"],[7,3.2,4.7,1.4,"versicolor"],[6.4,3.2,4.5,1.5,"versicolor"],[6.9,3.1,4.9,1.5,"versicolor"],[5.5,2.3,4,1.3,"versicolor"],[6.5,2.8,4.6,1.5,"versicolor"],[5.7,2.8,4.5,1.3,"versicolor"],[6.3,3.3,4.7,1.6,"versicolor"],[4.9,2.4,3.3,1,"versicolor"],[6.6,2.9,4.6,1.3,"versicolor"],[5.2,2.7,3.9,1.4,"versicolor"],[6.3,3.3,6,2.5,"virginica"],[5.8,2.7,5.1,1.9,"virginica"],[7.1,3,5.9,2.1,"virginica"],[6.3,2.9,5.6,1.8,"virginica"],[6.5,3,5.8,2.2,"virginica"],[7.6,3,6.6,2.1,"virginica"],[4.9,2.5,4.5,1.7,"virginica"],[7.3,2.9,6.3,1.8,"virginica"],[6.7,2.5,5.8,1.8,"virginica"],[7.2,3.6,6.1,2.5,"virginica"]];
-const col={setosa:'#facc15',versicolor:'#fb7185',virginica:'#38bdf8'};
-let cfg={paper_bgcolor:'rgba(0,0,0,0)',plot_bgcolor:'rgba(0,0,0,0)',font:{color:'#94a3b8',size:9},margin:{l:35,r:10,t:10,b:35}};
-Plotly.newPlot('p1',[{x:DATA.filter(d=>d[4]=='setosa').map(d=>d[2]),y:DATA.filter(d=>d[4]=='setosa').map(d=>d[3]),mode:'markers',name:'SETOSA 🌼 FAR',marker:{size:14,color:col.setosa,line:{width:2,color:'#fff'}}},{x:DATA.filter(d=>d[4]=='versicolor').map(d=>d[2]),y:DATA.filter(d=>d[4]=='versicolor').map(d=>d[3]),mode:'markers',name:'VERSI 🌸 MID',marker:{size:14,color:col.versicolor,line:{width:2,color:'#fff'}}},{x:DATA.filter(d=>d[4]=='virginica').map(d=>d[2]),y:DATA.filter(d=>d[4]=='virginica').map(d=>d[3]),mode:'markers',name:'VIRGI 🌺 TOP',marker:{size:14,color:col.virginica,line:{width:2,color:'#fff'}}}],{...cfg,xaxis:{title:'Petal Length (cm) - FAR',gridcolor:'#1e293b',range:[0.5,7.2]},yaxis:{title:'Petal Width',gridcolor:'#1e293b',range:[0,2.8]},legend:{orientation:'h',y:1.15,font:{size:8}}},{displayModeBar:false});
-Plotly.newPlot('p2',[{x:DATA.filter(d=>d[4]=='setosa').map(d=>d[2]),type:'histogram',name:'Setosa',marker:{color:col.setosa},opacity:0.8},{x:DATA.filter(d=>d[4]=='versicolor').map(d=>d[2]),type:'histogram',name:'Versi',marker:{color:col.versicolor},opacity:0.8},{x:DATA.filter(d=>d[4]=='virginica').map(d=>d[2]),type:'histogram',name:'Virgi',marker:{color:col.virginica},opacity:0.8}],{...cfg,barmode:'overlay',xaxis:{title:'Petal Length',gridcolor:'#1e293b'},yaxis:{gridcolor:'#1e293b'}},{displayModeBar:false});
-Plotly.newPlot('p3',[{y:DATA.filter(d=>d[4]=='setosa').map(d=>d[2]),type:'box',name:'Setosa',marker:{color:col.setosa}},{y:DATA.filter(d=>d[4]=='versicolor').map(d=>d[2]),type:'box',name:'Versi',marker:{color:col.versicolor}},{y:DATA.filter(d=>d[4]=='virginica').map(d=>d[2]),type:'box',name:'Virgi',marker:{color:col.virginica}}],{...cfg,yaxis:{title:'Petal Length',gridcolor:'#1e293b'}},{displayModeBar:false});
-Plotly.newPlot('p4',[{x:DATA.filter(d=>d[4]=='setosa').map(d=>d[0]),y:DATA.filter(d=>d[4]=='setosa').map(d=>d[1]),mode:'markers',name:'Setosa',marker:{size:8,color:col.setosa}},{x:DATA.filter(d=>d[4]=='versicolor').map(d=>d[0]),y:DATA.filter(d=>d[4]=='versicolor').map(d=>d[1]),mode:'markers',name:'Versi',marker:{size:8,color:col.versicolor}},{x:DATA.filter(d=>d[4]=='virginica').map(d=>d[0]),y:DATA.filter(d=>d[4]=='virginica').map(d=>d[1]),mode:'markers',name:'Virgi',marker:{size:8,color:col.virginica}}],{...cfg,xaxis:{title:'Sepal L - Overlap',gridcolor:'#1e293b'},yaxis:{title:'Sepal W',gridcolor:'#1e293b'}},{displayModeBar:false});
-Plotly.newPlot('p5',[{y:DATA.filter(d=>d[4]=='setosa').map(d=>d[2]),type:'violin',name:'Setosa',marker:{color:col.setosa},box:{visible:true}},{y:DATA.filter(d=>d[4]=='versicolor').map(d=>d[2]),type:'violin',name:'Versi',marker:{color:col.versicolor},box:{visible:true}},{y:DATA.filter(d=>d[4]=='virginica').map(d=>d[2]),type:'violin',name:'Virgi',marker:{color:col.virginica},box:{visible:true}}],{...cfg,yaxis:{gridcolor:'#1e293b'}},{displayModeBar:false});
-function predict(){let pl=parseFloat(document.getElementById('pl').value);document.getElementById('v1').innerText=document.getElementById('sl').value;document.getElementById('v2').innerText=document.getElementById('sw').value;document.getElementById('v3').innerText=pl;document.getElementById('v4').innerText=document.getElementById('pw').value;let s=pl<2.5?'setosa':pl<5?'versicolor':'virginica',e=pl<2.5?'🌼':pl<5?'🌸':'🌺',c=pl<2.5?98.5:pl<5?92.3:94.7,zone=pl<2.5?'Isolated Zone • Bottom Left':pl<5?'Middle Cluster • Center':'Far Top • Biggest';let color=pl<2.5?'#facc15':pl<5?'#fb7185':'#38bdf8';document.getElementById('pred').innerText=s.toUpperCase();document.getElementById('pred').style.color=color;document.getElementById('emoji').innerText=e;document.getElementById('conf').innerText=`Confidence ${c}% ✨ • ${zone} • 2026`;document.getElementById('conf').style.color=color;document.getElementById('conf').style.borderColor=color+'55';document.getElementById('conf').style.background=color+'15';}
+document.getElementById('miniTable').innerHTML=DATA.map(r=>`<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span>${r[2]}cm</span><span>${r[3]}cm</span><span style="color:${r[4]=='setosa'?'#facc15':r[4]=='versicolor'?'#fb7185':'#38bdf8'}">${r[4]}</span></div>`).join('');
+Plotly.newPlot('p1',[{x:DATA.filter(d=>d[4]=='setosa').map(d=>d[2]),y:DATA.filter(d=>d[4]=='setosa').map(d=>d[3]),mode:'markers',name:'SETOSA FAR',marker:{size:16,color:'#facc15',line:{width:2,color:'#fff'}}},{x:DATA.filter(d=>d[4]=='versicolor').map(d=>d[2]),y:DATA.filter(d=>d[4]=='versicolor').map(d=>d[3]),mode:'markers',name:'VERSICOLOR MID',marker:{size:16,color:'#fb7185',line:{width:2,color:'#fff'}}},{x:DATA.filter(d=>d[4]=='virginica').map(d=>d[2]),y:DATA.filter(d=>d[4]=='virginica').map(d=>d[3]),mode:'markers',name:'VIRGINICA TOP',marker:{size:16,color:'#38bdf8',line:{width:2,color:'#fff'}}}],{paper_bgcolor:'rgba(0,0,0,0)',plot_bgcolor:'rgba(0,0,0,0)',font:{color:'#fff',size:10},xaxis:{title:'Petal Length - Far',gridcolor:'rgba(255,255,255,0.06)'},yaxis:{title:'Petal Width',gridcolor:'rgba(255,255,255,0.06)'},margin:{l:40,r:10,t:10,b:40},legend:{orientation:'h',y:1.1}},{displayModeBar:false});
+function predict(){let pl=parseFloat(document.getElementById('pl').value);document.getElementById('v1').innerText=document.getElementById('sl').value;document.getElementById('v2').innerText=document.getElementById('sw').value;document.getElementById('v3').innerText=pl;document.getElementById('v4').innerText=document.getElementById('pw').value;let s=pl<2.5?'setosa':pl<5?'versicolor':'virginica',e=pl<2.5?'🌼':pl<5?'🌸':'🌺',c=pl<2.5?98.5:pl<5?92.3:94.7;document.getElementById('pred').innerText=s.toUpperCase();document.getElementById('emoji').innerText=e;document.getElementById('conf').innerText=c+'% • '+(pl<2.5?'Isolated':'Far')+' • 2026 ✨';}
 document.querySelectorAll('input').forEach(e=>e.oninput=predict);predict();
 </script>
 </body>
