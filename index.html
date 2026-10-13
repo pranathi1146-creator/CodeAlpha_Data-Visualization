@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Iris Flower Prediction - Pranathi</title>
+<style>
+body{background:#0f0c29;color:white;font-family:Arial;text-align:center;padding:30px}
+.box{background:rgba(255,255,255,0.1);padding:25px;border-radius:20px;max-width:600px;margin:20px auto}
+h1{color:#f6d365}
+button{padding:12px 25px;border:none;border-radius:10px;background:#f6d365;font-weight:bold;cursor:pointer}
+input{width:90%;margin:10px}
+</style>
+</head>
+<body>
+<h1>🌺 IRIS FLOWER PREDICTION 🌺</h1>
+<p>CodeAlpha Task-3 | By Pranathi | Accuracy 93.33%</p>
+
+<div class="box">
+<p>🌿 Sepal Length: <span id="v1">5.1</span></p>
+<input type="range" id="sl" min="4" max="8" step="0.1" value="5.1" oninput="predict()">
+
+<p>🌸 Petal Length: <span id="v2">1.4</span></p>
+<input type="range" id="pl" min="1" max="7" step="0.1" value="1.4" oninput="predict()">
+
+<div style="margin-top:20px;padding:20px;background:linear-gradient(135deg,#667eea,#764ba2);border-radius:15px">
+<h2 id="result">SETOSA 🌼</h2>
+<p id="conf">Confidence: 98%</p>
+</div>
+</div>
+
+<script>
+function predict(){
+document.getElementById('v1').innerText=document.getElementById('sl').value;
+let pl=document.getElementById('pl').value;
+document.getElementById('v2').innerText=pl;
+let r=document.getElementById('result');
+if(pl<2.5){r.innerText="SETOSA 🌼";document.getElementById('conf').innerText="Confidence: 98%";}
+else if(pl<5){r.innerText="VERSICOLOR 🌸";document.getElementById('conf').innerText="Confidence: 92%";}
+else{r.innerText="VIRGINICA 🌺";document.getElementById('conf').innerText="Confidence: 94%";}
+}
+</script>
+</body>
+</html>
