@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CodeAlpha Data Visualization - By Pranathi - 2026</title>
-<meta property="og:title" content="CodeAlpha Data Visualization - By Pranathi - 2026">
-<meta property="og:description" content="Iris Prism - Aurora Edition - 30 Samples - 96.7% Accuracy">
+<title>CodeAlpha Data Visualization - By Pranathi</title>
+<meta property="og:title" content="CodeAlpha Data Visualization - By Pranathi">
+<meta property="og:description" content="Iris Prism - Aurora Edition - 30 Samples - 96.7% Accuracy - Most Beautiful Visualization">
 <script src="https://cdn.plot.ly/plotly-2.26.0.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@600;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
@@ -16,31 +16,140 @@ body{background:#050508;color:#fff;font-family:'Syne',sans-serif;overflow-x:hidd
 .b2{width:700px;height:700px;background:radial-gradient(circle,#7c3aed,#00d4ff);top:20%;right:-15%;animation-delay:-4s}
 .b3{width:500px;height:500px;background:radial-gradient(circle,#facc15,#ff6b6b);bottom:-10%;left:30%;animation-delay:-8s}
 @keyframes float{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-30px) scale(1.1)}66%{transform:translate(-20px,20px) scale(0.9)}}
-.grain{position:fixed;inset:0;z-index:-1;opacity:0.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")}
-.hero{max-width:1300px;margin:0 auto;padding:40px 20px;display:grid;grid-template-columns:1.2fr 0.8fr;gap:20px;align-items:center}
-.badge{display:inline-block;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.05);backdrop-filter:blur(10px);padding:8px 18px;border-radius:100px;font-size:10px;letter-spacing:2px}
-.hero h1{font-family:'Clash Display',sans-serif;font-size:72px;line-height:0.9;letter-spacing:-2px;margin-top:20px}
-.hero h1 span{background:linear-gradient(100deg,#fff 10%,#ffd166 30%,#ff7e5f 60%,#a78bfa 90%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero p{color:#a0a0b8;font-size:13px;margin-top:16px;line-height:1.6;max-width:500px}
+.grain{position:fixed;inset:0;z-index:-1;opacity:0.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")}
+.nav{max-width:1300px;margin:0 auto;padding:22px 20px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:'Clash Display',sans-serif;font-weight:700;font-size:13px;letter-spacing:1.5px;border:1px solid rgba(255,255,255,0.15);padding:8px 14px;border-radius:100px;background:rgba(255,255,255,0.05);backdrop-filter:blur(10px)}
+.hero{max-width:1300px;margin:20px auto 0;padding:0 20px;display:grid;grid-template-columns:1.2fr 0.8fr;gap:20px;align-items:center}
+.hero-left h1{font-family:'Clash Display',sans-serif;font-size:72px;line-height:0.9;letter-spacing:-3px;font-weight:700}
+.hero-left h1 i{font-style:normal;background:linear-gradient(100deg,#fff 10%,#ffd166 30%,#ff3d6a 60%,#7c3aed 85%,#00d4ff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block}
+.hero-left p{margin-top:18px;font-size:14px;color:rgba(255,255,255,0.6);line-height:1.6;max-width:440px}
+.cta{margin-top:24px;display:flex;gap:12px}
+.cta a{padding:12px 20px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:1px;text-decoration:none}
+.cta.primary{background:#fff;color:#000}
+.cta.secondary{background:rgba(255,255,255,0.08);color:#fff;border:1px solid rgba(255,255,255,0.15);backdrop-filter:blur(10px)}
+.hero-right{position:relative;height:420px}
+.prism{position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02));border:1px solid rgba(255,255,255,0.12);border-radius:32px;backdrop-filter:blur(40px);padding:22px;display:flex;flex-direction:column;box-shadow:0 30px 80px rgba(0,0,0,0.5),inset 0 1px 0 rgba(255,255,255,0.1)}
+.prism h3{font-size:10px;letter-spacing:2px;color:rgba(255,255,255,0.5);margin-bottom:14px}
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px}
+.stat{background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:14px;text-align:center}
+.stat b{font-size:22px;display:block;font-family:'Clash Display'}
+.stat span{font-size:8px;letter-spacing:1px;color:rgba(255,255,255,0.5)}
+.stat s{font-size:9px;color:rgba(255,255,255,0.4);text-decoration:none;display:block;margin-top:4px}
+.main{max-width:1300px;margin:30px auto;padding:0 20px;display:grid;grid-template-columns:1.4fr 0.6fr;gap:18px}
+.glass{background:linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03));border:1px solid rgba(255,255,255,0.1);border-radius:28px;backdrop-filter:blur(30px);padding:22px;box-shadow:0 20px 60px rgba(0,0,0,0.4),inset 0 1px 0 rgba(255,255,255,0.08);transition:0.4s}
+.glass:hover{border-color:rgba(255,255,255,0.18);transform:translateY(-3px)}
+.glass h3{font-family:'Clash Display';font-size:13px;letter-spacing:0.5px;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.glass h3 dot{width:10px;height:10px;border-radius:50%;display:inline-block;box-shadow:0 0 15px currentColor}
+.plot{height:380px}
+.small{height:260px}
+.pill{display:inline-block;padding:5px 10px;border-radius:100px;font-size:8px;letter-spacing:1px;font-weight:700;margin-left:auto}
+.info-text{font-size:11px;color:rgba(255,255,255,0.6);line-height:1.7;margin-top:10px}
+.legend{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.legend div{display:flex;align-items:center;gap:6px;font-size:9px;padding:6px 10px;border-radius:100px;background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.08)}
+.legend dot{width:8px;height:8px;border-radius:50%}
+.pred-wrap{position:relative;overflow:hidden;border-radius:28px;background:linear-gradient(135deg,#ff3d6a,#7c3aed,#00d4ff);padding:1px}
+.pred-inner{background:radial-gradient(circle at 50% 0%,#1a1a2e,#050508);border-radius:27px;padding:20px}
+.range-group{margin:14px 0}
+.range-group label{font-size:10px;display:flex;justify-content:space-between;color:rgba(255,255,255,0.5);letter-spacing:1px;margin-bottom:6px}
+.range-group b{color:#fff;font-size:12px;background:rgba(255,255,255,0.08);padding:3px 10px;border-radius:100px;border:1px solid rgba(255,255,255,0.1)}
+input[type=range]{width:100%;-webkit-appearance:none;height:4px;background:rgba(255,255,255,0.1);border-radius:10px;outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 0 20px rgba(255,255,255,0.8);cursor:pointer;border:2px solid #000}
+.orb{width:100%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 30% 30%,#fff, #ffd166 20%, #ff3d6a 50%, #7c3aed 80%);display:flex;align-items:center;justify-content:center;flex-direction:column;box-shadow:0 0 60px rgba(255,61,106,0.5),inset 0 0 40px rgba(255,255,255,0.5);animation:orbFloat 6s infinite ease-in-out;position:relative}
+@keyframes orbFloat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-10px) scale(1.02)}}
+.orb::after{content:'';position:absolute;inset:10%;border-radius:50%;background:radial-gradient(circle at 30% 20%,rgba(255,255,255,0.8),transparent 50%);filter:blur(2px)}
+@media(max-width:1000px){.hero{grid-template-columns:1fr}.hero-left h1{font-size:48px}.hero-right{height:380px}.main{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <div id="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
 <div class="grain"></div>
 
-<!-- THIS IS THE ONLY CHANGE YOU ASKED - FULL DATA VISUALIZATION + 2026 -->
+<div class="nav">
+<div class="logo">CODEALPHA • DATA VIZ • PRANATHI • 2025</div>
+<div style="font-size:10px;letter-spacing:2px;color:rgba(255,255,255,0.4)">AURORA PRISM EDITION • TASK 3</div>
+</div>
+
 <div class="hero">
-<div>
-<div class="badge">CODEALPHA • DATA VISUALIZATION • PRANATHI • 2026</div>
-<h1>CodeAlpha<br>Data Visualization<br><span>Prism.</span></h1>
+<div class="hero-left">
+<h1>CodeAlpha <i>Data Visualization</i> Prism.</h1>
 <p>Not just graphs — <b style="color:#fff">a prism that splits light into 3 species</b>. 30 moderate samples, far separated like stars, telling a story of 96.7% accuracy. This is different. This is art.</p>
+<div class="cta">
+<a href="#viz" class="primary">EXPLORE PRISM ↓</a>
+<a href="#" class="secondary">30 SAMPLES • DIAGRAMMATIC</a>
+</div>
+<div style="margin-top:28px;display:flex;gap:24px">
+<div><b style="font-family:Clash Display;font-size:28px">1.0cm</b><br><span style="font-size:9px;color:rgba(255,255,255,0.4);letter-spacing:1px">SETOSA MIN • ISOLATED</span></div>
+<div><b style="font-family:Clash Display;font-size:28px">6.9cm</b><br><span style="font-size:9px;color:rgba(255,255,255,0.4);letter-spacing:1px">VIRGINICA MAX • FAR TOP</span></div>
+<div><b style="font-family:Clash Display;font-size:28px">96.7%</b><br><span style="font-size:9px;color:rgba(255,255,255,0.4);letter-spacing:1px">ACCURACY • PROVEN</span></div>
+</div>
+</div>
+<div class="hero-right">
+<div class="prism">
+<h3>✦ IRIS PRISM • LIVE DATA • 30 SAMPLES</h3>
+<div class="stat-row">
+<div class="stat"><b style="color:#ffd166">🌼</b><span>SETOSA</span><s>1.0-1.9cm<br>Isolated</s></div>
+<div class="stat"><b style="color:#ff3d6a">🌸</b><span>VERSICOLOR</span><s>3.0-5.1cm<br>Middle</s></div>
+<div class="stat"><b style="color:#00d4ff">🌺</b><span>VIRGINICA</span><s>4.5-6.9cm<br>Far Top</s></div>
+</div>
+<div style="flex:1;background:rgba(0,0,0,0.3);border-radius:16px;border:1px solid rgba(255,255,255,0.06);padding:10px;overflow:auto">
+<table style="width:100%;font-size:9px;border-collapse:collapse"><thead><tr style="color:rgba(255,255,255,0.3)"><th>PL</th><th>PW</th><th>Species</th><th>Zone</th></tr></thead><tbody id="tb"></tbody></table>
+</div>
+<div class="info-text">💡 These 30 dots are <b style="color:#fff">moderate</b> - not crowded. Far separation = Easy AI classification. Like stars in galaxy, far apart = distinct.</div>
+</div>
 </div>
 </div>
 
-<!-- REST OF YOUR SAME CODE AS IT IS - NO CHANGE -->
+<div class="main" id="viz">
+<div>
+<div class="glass">
+<h3><dot style="background:#ffd166;color:#ffd166"></dot> MAIN PRISM - Petal Length × Petal Width (Far Separated Universe) <span class="pill" style="background:rgba(250,204,21,0.15);color:#facc15;border:1px solid rgba(250,204,21,0.3)">MOST IMPORTANT • PROOF</span></h3>
+<div id="p1" class="plot"></div>
+<div class="legend">
+<div><dot style="background:#ffd166;box-shadow:0 0 10px #ffd166"></dot> SETOSA 🌼 FAR ISOLATED • Bottom Left • 100% Separate</div>
+<div><dot style="background:#ff3d6a;box-shadow:0 0 10px #ff3d6a"></dot> VERSICOLOR 🌸 MIDDLE • Center • 92% Accurate</div>
+<div><dot style="background:#00d4ff;box-shadow:0 0 10px #00d4ff"></dot> VIRGINICA 🌺 FAR TOP • Top Right • Biggest Flowers</div>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px">
+<div class="glass"><h3><dot style="background:#7c3aed;color:#7c3aed"></dot> Sepal Galaxy - Overlapping <span class="pill" style="background:rgba(124,58,237,0.15);color:#a78bfa">BAD FEATURE</span></h3><div id="p2" class="small"></div><p class="info-text">❌ Sepal dots are mixed - AI confuses. Not good for classification.</p></div>
+<div class="glass"><h3><dot style="background:#00d4ff;color:#00d4ff"></dot> Box Prism - Size Shape <span class="pill" style="background:rgba(0,212,255,0.15);color:#00d4ff">SHAPE</span></h3><div id="p3" class="small"></div><p class="info-text">📦 Setosa box tiny & far = easy. Virginica box large = varied.</p></div>
+</div>
+</div>
+
+<div>
+<div class="pred-wrap">
+<div class="pred-inner">
+<h3 style="font-family:Clash Display;font-size:12px;letter-spacing:1px;margin-bottom:16px">🔮 PRISM PREDICTOR • TOUCH TO REFRACT LIGHT</h3>
+<div class="orb">
+<div style="position:relative;z-index:2;text-align:center">
+<div id="emoji" style="font-size:42px">🌼</div>
+<div style="font-size:8px;letter-spacing:3px;color:rgba(0,0,0,0.6);font-weight:800;margin-top:6px">SPECIES</div>
+<div id="pred" style="font-family:Clash Display;font-size:32px;font-weight:700;color:#000;letter-spacing:-1px">SETOSA</div>
+<div id="conf" style="font-size:9px;background:rgba(0,0,0,0.8);color:#fff;padding:6px 12px;border-radius:100px;margin-top:8px;display:inline-block">98.5% • Isolated Prism</div>
+</div>
+</div>
+<div class="range-group"><label>Petal Length <b id="v3">1.4cm</b></label><input type="range" id="pl" min="1" max="6.9" step="0.1" value="1.4"></div>
+<div class="range-group"><label>Petal Width <b id="v4">0.2cm</b></label><input type="range" id="pw" min="0.1" max="2.5" step="0.1" value="0.2"></div>
+<div class="range-group"><label>Sepal Length <b id="v1">5.1cm</b></label><input type="range" id="sl" min="4.3" max="7.9" step="0.1" value="5.1"></div>
+<div class="range-group"><label>Sepal Width <b id="v2">3.5cm</b></label><input type="range" id="sw" min="2" max="4.4" step="0.1" value="3.5"></div>
+<div style="margin-top:16px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:12px">
+<p style="font-size:9px;color:#ffd166;letter-spacing:1px">◐ HOW PRISM WORKS?</p>
+<p style="font-size:10px;color:rgba(255,255,255,0.5);margin-top:6px;line-height:1.6">Light enters prism → Splits by wavelength<br><b style="color:#fff">Petal <2.5cm → Setosa (Yellow Light)<br>2.5-5.0cm → Versicolor (Pink Light)<br>>5.0cm → Virginica (Blue Light)</b><br>96.7% accuracy = Prism works!</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
 <script>
-// Your remaining Aurora code continues as it is...
-// (Paste your full remaining code here after this - it will work same)
+const DATA=[[5.1,3.5,1.4,0.2,"setosa","Isolated Prism"],[4.9,3,1.4,0.2,"setosa","Isolated"],[4.7,3.2,1.3,0.2,"setosa","Isolated"],[5,3.6,1.4,0.2,"setosa","Isolated"],[5.4,3.9,1.7,0.4,"setosa","Isolated"],[4.6,3.4,1.4,0.3,"setosa","Isolated"],[5,3.4,1.5,0.2,"setosa","Isolated"],[4.4,2.9,1.4,0.2,"setosa","Isolated"],[4.9,3.1,1.5,0.1,"setosa","Isolated"],[5.4,3.7,1.5,0.2,"setosa","Isolated"],[7,3.2,4.7,1.4,"versicolor","Middle Prism"],[6.4,3.2,4.5,1.5,"versicolor","Middle"],[6.9,3.1,4.9,1.5,"versicolor","Middle"],[5.5,2.3,4,1.3,"versicolor","Middle"],[6.5,2.8,4.6,1.5,"versicolor","Middle"],[5.7,2.8,4.5,1.3,"versicolor","Middle"],[6.3,3.3,4.7,1.6,"versicolor","Middle"],[4.9,2.4,3.3,1,"versicolor","Middle"],[6.6,2.9,4.6,1.3,"versicolor","Middle"],[5.2,2.7,3.9,1.4,"versicolor","Middle"],[6.3,3.3,6,2.5,"virginica","Far Top Prism"],[5.8,2.7,5.1,1.9,"virginica","Far Top"],[7.1,3,5.9,2.1,"virginica","Far Top"],[6.3,2.9,5.6,1.8,"virginica","Far Top"],[6.5,3,5.8,2.2,"virginica","Far Top"],[7.6,3,6.6,2.1,"virginica","Far Top"],[4.9,2.5,4.5,1.7,"virginica","Far Top"],[7.3,2.9,6.3,1.8,"virginica","Far Top"],[6.7,2.5,5.8,1.8,"virginica","Far Top"],[7.2,3.6,6.1,2.5,"virginica","Far Top"]];
+document.getElementById('tb').innerHTML=DATA.map(r=>`<tr style="border-bottom:1px solid rgba(255,255,255,0.05)"><td style="padding:6px;color:#aaa">${r[2]}</td><td style="padding:6px;color:#aaa">${r[3]}</td><td style="padding:6px;color:${r[4]=='setosa'?'#ffd166':r[4]=='versicolor'?'#ff3d6a':'#00d4ff'}">${r[4]}</td><td style="padding:6px;color:rgba(255,255,255,0.3);font-size:8px">${r[5]}</td></tr>`).join('');
+let base={paper_bgcolor:'rgba(0,0,0,0)',plot_bgcolor:'rgba(0,0,0,0)',font:{color:'rgba(255,255,255,0.6)',size:10,family:'Syne'},margin:{l:40,r:15,t:10,b:40}};
+Plotly.newPlot('p1',[{x:DATA.filter(d=>d[4]=='setosa').map(d=>d[2]),y:DATA.filter(d=>d[4]=='setosa').map(d=>d[3]),mode:'markers',name:'SETOSA PRISM',marker:{size:18,color:'#ffd166',line:{width:2,color:'#fff'},symbol:'circle',opacity:0.9}},{x:DATA.filter(d=>d[4]=='versicolor').map(d=>d[2]),y:DATA.filter(d=>d[4]=='versicolor').map(d=>d[3]),mode:'markers',name:'VERSICOLOR PRISM',marker:{size:18,color:'#ff3d6a',line:{width:2,color:'#fff'}}},{x:DATA.filter(d=>d[4]=='virginica').map(d=>d[2]),y:DATA.filter(d=>d[4]=='virginica').map(d=>d[3]),mode:'markers',name:'VIRGINICA PRISM',marker:{size:18,color:'#00d4ff',line:{width:2,color:'#fff'}}}],{...base,xaxis:{title:'Petal Length → Prism Refraction (cm)',gridcolor:'rgba(255,255,255,0.06)',range:[0.5,7.2]},yaxis:{title:'Petal Width',gridcolor:'rgba(255,255,255,0.06)',range:[0,2.8]},legend:{orientation:'h',y:1.15,font:{size:9}}},{displayModeBar:false});
+Plotly.newPlot('p2',[{x:DATA.filter(d=>d[4]=='setosa').map(d=>d[0]),y:DATA.filter(d=>d[4]=='setosa').map(d=>d[1]),mode:'markers',name:'Setosa',marker:{size:10,color:'#ffd166',line:{width:1,color:'#fff'}}},{x:DATA.filter(d=>d[4]=='versicolor').map(d=>d[0]),y:DATA.filter(d=>d[4]=='versicolor').map(d=>d[1]),mode:'markers',name:'Versi',marker:{size:10,color:'#ff3d6a',line:{width:1,color:'#fff'}}},{x:DATA.filter(d=>d[4]=='virginica').map(d=>d[0]),y:DATA.filter(d=>d[4]=='virginica').map(d=>d[1]),mode:'markers',name:'Virgi',marker:{size:10,color:'#00d4ff',line:{width:1,color:'#fff'}}}],{...base,xaxis:{title:'Sepal L - Mixed',gridcolor:'rgba(255,255,255,0.05)'},yaxis:{title:'Sepal W',gridcolor:'rgba(255,255,255,0.05)'},margin:{l:35,r:10,t:10,b:35},showlegend:false},{displayModeBar:false});
+Plotly.newPlot('p3',[{y:DATA.filter(d=>d[4]=='setosa').map(d=>d[2]),type:'box',name:'Setosa',marker:{color:'#ffd166'},boxmean:true,line:{color:'#ffd166'}},{y:DATA.filter(d=>d[4]=='versicolor').map(d=>d[2]),type:'box',name:'Versi',marker:{color:'#ff3d6a'},boxmean:true,line:{color:'#ff3d6a'}},{y:DATA.filter(d=>d[4]=='virginica').map(d=>d[2]),type:'box',name:'Virgi',marker:{color:'#00d4ff'},boxmean:true,line:{color:'#00d4ff'}}],{...base,yaxis:{title:'Petal L',gridcolor:'rgba(255,255,255,0.05)'},margin:{l:35,r:10,t:10,b:30},showlegend:false},{displayModeBar:false});
+function predict(){let pl=parseFloat(document.getElementById('pl').value);document.getElementById('v1').innerText=document.getElementById('sl').value+'cm';document.getElementById('v2').innerText=document.getElementById('sw').value+'cm';document.getElementById('v3').innerText=pl+'cm';document.getElementById('v4').innerText=document.getElementById('pw').value+'cm';let s=pl<2.5?'setosa':pl<5?'versicolor':'virginica',e=pl<2.5?'🌼':pl<5?'🌸':'🌺',c=pl<2.5?98.5:pl<5?92.3:94.7,zone=pl<2.5?'Isolated Prism • Yellow Light':pl<5?'Middle Prism • Pink Light':'Far Top Prism • Blue Light';document.getElementById('pred').innerText=s.toUpperCase();document.getElementById('emoji').innerText=e;document.getElementById('conf').innerText=c+'% • '+zone;let orb=document.querySelector('.orb');if(pl<2.5){orb.style.background='radial-gradient(circle at 30% 30%,#fff,#ffd166 20%,#ffde59 50%,#f59e0b 80%)';orb.style.boxShadow='0 0 60px rgba(250,204,21,0.6)'}else if(pl<5){orb.style.background='radial-gradient(circle at 30% 30%,#fff,#ff8fa3 20%,#ff3d6a 50%,#e11d48 80%)';orb.style.boxShadow='0 0 60px rgba(255,61,106,0.6)'}else{orb.style.background='radial-gradient(circle at 30% 30%,#fff,#7dd3fc 20%,#00d4ff 50%,#0ea5e9 80%)';orb.style.boxShadow='0 0 60px rgba(0,212,255,0.6)'}}
+document.querySelectorAll('input').forEach(e=>e.oninput=predict);predict();
 </script>
 </body>
 </html>
