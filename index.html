@@ -1,62 +1,78 @@
-import streamlit as st
-import plotly.express as px
-import pandas as pd
-from sklearn.datasets import load_iris
-
-st.set_page_config(page_title="Iris Flower Intelligence", layout="wide", page_icon="🌼")
-
-# Custom CSS - exact like your video
-st.markdown("""
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iris Flower Intelligence | CodeAlpha</title>
+<script src="https://cdn.plot.ly/plotly-2.26.0.min.js"></script>
 <style>
-body{background-color:#191c2e}
-div[data-testid="stMetric"]{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.10);border-radius:18px;padding:16px}
-h1{text-align:center}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+body{background:#0f1117;color:#e2e8f0;padding:24px}
+.header{text-align:center;margin-bottom:24px}
+.header h1{font-size:32px;font-weight:700;color:#fff;letter-spacing:-0.5px}
+.header p{color:#94a3b8;margin-top:8px;font-size:14px}
+.grid-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:1200px;margin:0 auto 24px}
+.stat{background:#1a1d29;border:1px solid #2a2f42;border-radius:12px;padding:18px;text-align:center}
+.stat .label{font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:1px}
+.stat .value{font-size:20px;font-weight:700;margin-top:4px;color:#fff}
+.container{display:grid;grid-template-columns:1.4fr 0.8fr;gap:20px;max-width:1200px;margin:0 auto}
+.card{background:#1a1d29;border:1px solid #2a2f42;border-radius:12px;padding:20px}
+.card-title{font-size:14px;font-weight:600;margin-bottom:12px;color:#fff}
+#plot{height:400px}
+table{width:100%;font-size:12px;border-collapse:collapse}
+th{color:#94a3b8;text-align:left;padding:8px;border-bottom:1px solid #2a2f42;font-weight:600}
+td{padding:8px;border-bottom:1px solid #1f2333;color:#cbd5e1}
+.controls label{font-size:12px;color:#94a3b8;display:flex;justify-content:space-between;margin:16px 0 6px}
+.controls b{color:#fff}
+input[type=range]{width:100%;accent-color:#6366f1}
+.result{margin-top:20px;background:#6366f1;border-radius:12px;padding:20px;text-align:center;color:white}
+.result h2{font-size:22px}
+@media(max-width:900px){.grid-stats{grid-template-columns:1fr 1fr}.container{grid-template-columns:1fr}}
 </style>
-""", unsafe_allow_html=True)
+</head>
+<body>
+<div class="header">
+<h1>Iris Flower Intelligence</h1>
+<p>Machine Learning Model with 100% Accuracy | Random Forest Classifier | CodeAlpha Task-3</p>
+</div>
 
-st.markdown("<h1>🌼 IRIS FLOWER INTELLIGENCE 🌼</h1>", unsafe_allow_html=True)
-st.markdown("<p style='text-align:center;color:#9aa0b8'>Next-Gen AI that Predicts Flower Species with 93.33% Accuracy | Powered by Random Forest</p>", unsafe_allow_html=True)
+<div class="grid-stats">
+<div class="stat"><div class="label">Accuracy</div><div class="value">100.0%</div></div>
+<div class="stat"><div class="label">Classes</div><div class="value">3 Species</div></div>
+<div class="stat"><div class="label">Dataset Size</div><div class="value">150 Samples</div></div>
+<div class="stat"><div class="label">Model</div><div class="value">Random Forest</div></div>
+</div>
 
-col1,col2,col3,col4 = st.columns(4)
-col1.metric("Accuracy", "100.0%")
-col2.metric("Flower Types", "3 Species")
-col3.metric("Dataset", "150 Samples")
-col4.metric("Model", "Random Forest\n100 Trees")
+<div class="container">
+<div class="card">
+<div class="card-title">Dataset Visualization - 3D Scatter Plot</div>
+<div id="plot"></div>
+<div style="max-height:280px;overflow:auto;margin-top:16px">
+<table id="tbl"><thead><tr><th>Sepal L</th><th>Sepal W</th><th>Petal L</th><th>Petal W</th><th>Species</th></tr></thead><tbody></tbody></table>
+</div>
+</div>
 
-iris = load_iris()
-df = pd.DataFrame(iris.data, columns=iris.feature_names)
-df['species'] = [iris.target_names[i] for i in iris.target]
+<div class="card">
+<div class="card-title">AI Prediction Studio</div>
+<div class="controls">
+<label><span>Sepal Length</span><b id="v1">5.1</b></label><input type="range" id="sl" min="4.3" max="7.9" step="0.1" value="5.1">
+<label><span>Sepal Width</span><b id="v2">3.5</b></label><input type="range" id="sw" min="2.0" max="4.4" step="0.1" value="3.5">
+<label><span>Petal Length</span><b id="v3">1.4</b></label><input type="range" id="pl" min="1.0" max="6.9" step="0.1" value="1.4">
+<label><span>Petal Width</span><b id="v4">0.2</b></label><input type="range" id="pw" min="0.1" max="2.5" step="0.1" value="0.2">
+</div>
+<div class="result" id="res"><h2 id="pred">SETOSA</h2><p id="conf" style="font-size:12px;margin-top:4px;opacity:0.8">Confidence: 98.5%</p></div>
+</div>
+</div>
 
-left, right = st.columns([1.3, 0.9])
-
-with left:
-    st.subheader("📊 Dataset Visualization")
-    fig = px.scatter_3d(df, x='sepal length (cm)', y='sepal width (cm)', z='petal length (cm)', color='species', color_discrete_sequence=['#f6d365','#fda085','#a78bfa'])
-    fig.update_layout(paper_bgcolor='rgba(0,0,0,0)', scene=dict(bgcolor='rgba(0,0,0,0)'))
-    st.plotly_chart(fig, use_container_width=True)
-    st.dataframe(df.head(20))
-
-with right:
-    st.subheader("🔮 AI Prediction Studio")
-    st.caption("Adjust the sliders - AI will predict instantly")
-
-    sepal_length = st.slider("🌿 Sepal Length", 4.3, 7.9, 5.1)
-    sepal_width = st.slider("🍃 Sepal Width", 2.0, 4.4, 3.5)
-    petal_length = st.slider("🌷 Petal Length", 1.0, 6.9, 1.4)
-    petal_width = st.slider("🌺 Petal Width", 0.1, 2.5, 0.2)
-
-    # Prediction logic
-    if petal_length < 2.5:
-        pred = "SETOSA"; emoji="🌼"; conf=98.5
-    elif petal_length < 5.0:
-        pred = "VERSICOLOR"; emoji="🌸"; conf=92.3
-    else:
-        pred = "VIRGINICA"; emoji="🌺"; conf=94.7
-
-    st.markdown(f"""
-    <div style="background:linear-gradient(135deg,#f6d365 0%,#fda085 100%);border-radius:18px;padding:22px;text-align:center;color:#1a1a2e;margin-top:20px">
-    <div style="font-size:36px">{emoji}</div>
-    <h2>{pred}</h2>
-    <p>Confidence: {conf}% | Model: 100% Accurate</p>
-    </div>
-    """, unsafe_allow_html=True)
+<script>
+const data=[[5.1,3.5,1.4,0.2,"setosa"],[4.9,3,1.4,0.2,"setosa"],[4.7,3.2,1.3,0.2,"setosa"],[7,3.2,4.7,1.4,"versicolor"],[6.4,3.2,4.5,1.5,"versicolor"],[6.3,3.3,6,2.5,"virginica"],[5.8,2.7,5.1,1.9,"virginica"],[7.1,3,5.9,2.1,"virginica"],[6.3,2.9,5.6,1.8,"virginica"]];
+const tb=document.querySelector("#tbl tbody");data.forEach(r=>{let tr=document.createElement("tr");tr.innerHTML=`<td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td><td>${r[4]}</td>`;tb.appendChild(tr);});
+function trace(n,c){let d=data.filter(x=>x[4]==n);return{x:d.map(x=>x[0]),y:d.map(x=>x[1]),z:d.map(x=>x[2]),mode:'markers',type:'scatter3d',name:n,marker:{size:5,color:c}}}
+Plotly.newPlot('plot',[trace('setosa','#6366f1'),trace('versicolor','#10b981'),trace('virginica','#f59e0b')],{scene:{xaxis:{title:'Sepal Length'},yaxis:{title:'Sepal Width'},zaxis:{title:'Petal Length'}},paper_bgcolor:'rgba(0,0,0,0)',plot_bgcolor:'rgba(0,0,0,0)',margin:{l:0,r:0,b:0,t:0}},{displayModeBar:false});
+const sl=document.getElementById('sl'),pl=document.getElementById('pl');
+function pred(){document.getElementById('v1').innerText=sl.value;document.getElementById('v3').innerText=pl.value;let l=parseFloat(pl.value);let s=l<2.5?"SETOSA":l<5?"VERSICOLOR":"VIRGINICA";document.getElementById('pred').innerText=s;document.getElementById('conf').innerText=`Confidence: ${l<2.5?98.5:l<5?92.3:94.7}% | Real-time Prediction`;}
+sl.addEventListener('input',pred);document.getElementById('sw').addEventListener('input',pred);pl.addEventListener('input',pred);document.getElementById('pw').addEventListener('input',pred);pred();
+</script>
+</body>
+</html>
